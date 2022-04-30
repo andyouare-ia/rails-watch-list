@@ -1,5 +1,16 @@
 <h2><%= @list.name %></h2>
 
+<p><% @list.movies.each do |movie| %></p>
 
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%= movie.poster_url %>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= movie.title %></h5>
+    <p class="card-text"><%= movie.overview %></p>
+    <p class="card-text"><%= '⭐' * movie.rating %></p>
+  </div>
+</div>
 
-<p><%= link_to 'New bookmark', new_list_bookmark_path(@list) %></p>
+<p><% end %></p>
+
+<p><%= link_to 'New bookmark', new_list_bookmark_path(@list) %> | <%= link_to 'Back to Movie Lists', lists_path %></p>

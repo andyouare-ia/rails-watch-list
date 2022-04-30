@@ -9,6 +9,8 @@ require 'faker'
 
 puts "Cleaning database..."
 Movie.destroy_all
+List.destroy_all
+Bookmark.destroy_all
 
 puts "Creating movies..."
 
@@ -22,7 +24,7 @@ Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal masterm
     title: Faker::Movie.title,
     overview: Faker::Restaurant.review,
     poster_url: "https://picsum.photos/id/#{n}/200/300",
-    rating: rand(1..10)
+    rating: rand(1..5)
   })
   puts "#{movie.title} #{movie.overview} #{movie.poster_url} #{movie.rating}"
 end
