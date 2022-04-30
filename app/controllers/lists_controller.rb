@@ -16,8 +16,12 @@ class ListsController < ApplicationController
   # POST "lists"
   def create
     @list = List.new(list_params)
-    @list.save
-    redirect_to lists_path
+    if @list.valid?
+      @list.save
+      redirect_to list_path(@list)
+    else
+      render :new
+    end
   end
 
   private
@@ -25,6 +29,5 @@ class ListsController < ApplicationController
   def list_params
     params.require(:list).permit(:name)
   end
-
 
 end
