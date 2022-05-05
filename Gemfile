@@ -28,6 +28,9 @@ gem 'faker'
 # generate env
 gem 'dotenv-rails', groups: [:development, :test]
 
+# Gemfile
+gem 'cloudinary', '~> 1.16.0'
+
 # Frontend
 gem "autoprefixer-rails", "10.2.5"
 gem "font-awesome-sass", "~> 5.15"
