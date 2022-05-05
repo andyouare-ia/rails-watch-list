@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 #seeds
 gem 'faker'
 
+# generate env
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Frontend
 gem "autoprefixer-rails", "10.2.5"
 gem "font-awesome-sass", "~> 5.15"
