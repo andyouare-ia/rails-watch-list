@@ -1,8 +1,12 @@
 <h2>Add a new List</h2>
-<%= form_for(@list) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+<div>
+  <%= form_for(@list) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
+</div>
 
-<p><%= link_to 'Back to Movie Lists', lists_path %></p>
+<div>
+  <p><%= link_to 'Back to Movie Lists', lists_path %></p>
+</div>

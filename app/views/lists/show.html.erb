@@ -1,16 +1,19 @@
 <h2><%= @list.name %></h2>
 
-<p><% @list.movies.each do |movie| %></p>
 
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="<%= movie.poster_url %>" alt="Card image cap">
+
+<div class="cards">
+  <% @list.movies.each do |movie| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>)">
+
   <div class="card-body">
-    <h5 class="card-title"><%= movie.title %></h5>
-    <p class="card-text"><%= movie.overview %></p>
-    <p class="card-text"><%= '⭐' * movie.rating %></p>
+    <h3 class="card-title"><%= movie.title %></h5>
+    <p><%= truncate(movie.overview, length: 60, separator: ' ') %></p>
+    <p><%= '⭐' * movie.rating %></p>
   </div>
+    </div>
+  <% end %>
 </div>
 
-<p><% end %></p>
 
 <p><%= link_to 'New bookmark', new_list_bookmark_path(@list) %> | <%= link_to 'Back to Movie Lists', lists_path %></p>
