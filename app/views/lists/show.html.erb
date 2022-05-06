@@ -1,19 +1,18 @@
 <h2><%= @list.name %></h2>
 
-
-
-<div class="cards">
-  <% @list.movies.each do |movie| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>)">
-
-  <div class="card-body">
-    <h3 class="card-title"><%= movie.title %></h5>
-    <p><%= truncate(movie.overview, length: 60, separator: ' ') %></p>
-    <p><%= '⭐' * movie.rating %></p>
-  </div>
+<% @list.movies.each do |movie| %>
+<% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+  <div class="card-product">
+    <img src="<%= movie.poster_url %>" />
+    <div class="card-product-infos">
+      <h2><%= movie.title %></h2>
+      <p>Summary: <%= truncate(movie.overview, length: 60, separator: ' ') %></p>
+      <p>Rating: <%= '⭐' * movie.rating %></p>
+      <p>My comments: <%= bookmark.comment %></p>
     </div>
-  <% end %>
-</div>
+  </div>
+  <br>
+<% end %>
 
 
 <p><%= link_to 'New bookmark', new_list_bookmark_path(@list) %> | <%= link_to 'Back to Movie Lists', lists_path %></p>
