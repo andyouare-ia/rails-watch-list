@@ -1,4 +1,4 @@
-<h2>New bookmark</h2>
+<h2>New bookmark for <%= @list.name %> list</h2>
 <%= simple_form_for [@list, @bookmark] do |f| %>
   <%= f.input :comment %>
   <%= f.association :movie %>
