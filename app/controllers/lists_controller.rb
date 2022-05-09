@@ -3,18 +3,15 @@ class ListsController < ApplicationController
     @lists = List.all.sort { |a, b| a.name <=> b.name }
   end
 
-  # GET "lists/38"
   def show
     @list = List.find(params[:id])
     @movies = sort_movies(@list)
   end
 
-  # GET "list/new"
   def new
     @list = List.new
   end
 
-  # POST "lists"
   def create
     @list = List.new(list_params)
     if @list.valid?
@@ -23,6 +20,12 @@ class ListsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to lists_path
   end
 
   private

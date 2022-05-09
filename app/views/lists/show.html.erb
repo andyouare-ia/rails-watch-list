@@ -9,9 +9,13 @@
       <p>Summary: <%= truncate(movie.overview, length: 60, separator: ' ') %></p>
       <p>Rating: <%= '⭐' * movie.rating %></p>
       <p>My comments: <%= bookmark.comment %></p>
+      <p><%= link_to '🗑️ Delete', bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to delete #{movie.title}?" } %></p>
     </div>
   </div>
   <br>
 <% end %>
 
-<p><%= link_to 'New bookmark', new_list_bookmark_path(@list) %> | <%= link_to 'Back to Movie Lists', lists_path %></p>
+<p>
+  <%= link_to 'New bookmark', new_list_bookmark_path(@list) %> |
+  <%= link_to 'Back to Movie Lists', lists_path %> |
+  <%= link_to 'Delete', list_path(@list), method: :delete, data: { confirm: "Are you sure you want to delete #{@list.name}?" } %></p>
